@@ -6002,3 +6002,27 @@ it('Should return \'nine hundred ninety nine\' when 999 given', () => {
 
   assert.equal(readable, 'nine hundred ninety nine');
 });
+
+it('Should return \'one thousand\' when 1000 given', () => {
+  const readable = toReadable(1000);
+
+  assert.equal(readable, 'one thousand');
+});
+
+it('Should return \'one thousand one hundred eleven\' when 1111 given', () => {
+    const readable = toReadable(1111);
+
+    assert.equal(readable, 'one thousand one hundred eleven');
+});
+
+it('Should return \'minus one\' when -1 given', () => {
+  const readable = toReadable(-1);
+
+  assert.equal(readable, 'minus one');
+});
+
+it('Should return \'minus nine hundred ninety six\' when -996 given', () => {
+    const readable = toReadable(-996);
+
+    assert.equal(readable, 'minus nine hundred ninety six');
+});

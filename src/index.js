@@ -56,15 +56,18 @@ module.exports = function toReadable (number) {
         }
     }
 
-    let ones = number % 10;
-    let tens = (number - ones) % 100 / 10;
-    const hundreds = (number - tens * 10 - ones) % 1000 / 100;
+    let ones = Math.abs(number) % 10;
+    let tens = (Math.abs(number) - ones) % 100 / 10;
+    const hundreds = (Math.abs(number) - tens * 10 - ones) % 1000 / 100;
+    const thousands = (Math.abs(number) - hundreds * 100 - tens * 10 - ones) % 10000 / 1000;
     if (tens === 1) {
         ones += 10;
         tens = 0;
     }
 
     const words = [];
+    words.push(number < 0 ? 'minus' : '');
+    words.push(toWord100(thousands, 'thousand'));
     words.push(toWord100(hundreds, 'hundred'));
     words.push(toWord10(tens));
     words.push(toWord1(ones));
